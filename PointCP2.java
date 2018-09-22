@@ -44,8 +44,9 @@ public class PointCP2
     if(type != 'C' && type != 'P')
       throw new IllegalArgumentException();
     
-    
+    typeCoord = type;
     if(typeCoord == 'P') {
+    	
     	this.xOrRho = xOrRho;
         this.yOrTheta = yOrTheta;
         
@@ -54,7 +55,7 @@ public class PointCP2
         this.yOrTheta = Math.toDegrees(Math.atan2(yOrTheta, xOrRho));
     }
 
-    typeCoord = type;
+    
   }
 	
   
