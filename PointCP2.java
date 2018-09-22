@@ -44,6 +44,7 @@ public class PointCP2
     if(type != 'C' && type != 'P')
       throw new IllegalArgumentException();
     
+    
     if(typeCoord == 'P') {
     	this.xOrRho = xOrRho;
         this.yOrTheta = yOrTheta;
@@ -84,7 +85,7 @@ public class PointCP2
   /**
    * Converts Cartesian coordinates to Polar coordinates.
    */
-  public void convertStorageToPolar()
+  public PointCP2 convertStorageToPolar()
   {
     if(typeCoord != 'P')
     {
@@ -95,14 +96,16 @@ public class PointCP2
       
       typeCoord = 'P';  //Change coord type identifier
     }
+    return new PointCP2('P',xOrRho,yOrTheta);
   }
 	
+  
   /**
    * Converts Polar coordinates to Cartesian coordinates.
    */
-  public void convertStorageToCartesian()
+  public PointCP3 convertStorageToCartesian()
   {
-    if(typeCoord != 'C')
+    /**if(typeCoord != 'C')
     {
       //Calculate X and Y
       double temp = getX();
@@ -110,7 +113,8 @@ public class PointCP2
       xOrRho = temp;
    
       typeCoord = 'C';	//Change coord type identifier
-    }
+    }*/
+    return new PointCP3('C',xOrRho,yOrTheta);
   }
 
   /**
