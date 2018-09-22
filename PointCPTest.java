@@ -70,19 +70,21 @@ public class PointCPTest
     for (int j=0; j<5; j++){
     	System.out.print("Test number: "+(j+1));
 	    long startTime = System.currentTimeMillis();
-	    for (int i=0; i<=20000000; i++){
+	    for (int i=0; i<=2000000; i++){
+	    	
 	    	PointCP2 pointa;
-	    	PointCP2 point2;
 	        
 	    	double x = (Math.random()*10.0);
 	    	double y = (Math.random()*10.0);
+	    	
 	    	pointa = new PointCP2('C',x,y);
 	    	pointa.convertStorageToCartesian();
-	    	point2 = new PointCP2('P',x,y);
-	    	point2.convertStorageToPolar();
+	    	
+	    	pointa.convertStorageToPolar();
+	    	
 	    	
 	    	pointa.getDistance(new PointCP2('C',0.0,0.0));
-	    	point2.getDistance(new PointCP2('P',0.0,0.0));
+	    	pointa.getDistance(new PointCP2('P',0.0,0.0));
 	    	
 	    	double r = (Math.random()*360.0);
 	    	pointa.rotatePoint(r);
@@ -94,19 +96,21 @@ public class PointCPTest
 	    System.out.println("\n 		Elapsed time of Design 2: "+ elapsedTime + " milliseconds");
 	    
 	    long startTime1 = System.currentTimeMillis();
-	    for (int i=0; i<=20000000; i++){
+	    for (int i=0; i<=2000000; i++){
+	    	
 	    	PointCP3 pointb;
-	    	PointCP3 point3;
-	        
+	    	
 	    	double x = (Math.random()*10.0);
 	    	double y = (Math.random()*10.0);
-	    	point3 = new PointCP3('P',x,y);
-	    	point3.convertStorageToPolar();
-	    	pointb = new PointCP3('C',x,y);
-	    	pointb.convertStorageToCartesian();
 	    	
+	    	pointb = new PointCP3('P',x,y);
+	    	
+	    	pointb.convertStorageToPolar();
+	    	
+	    	pointb.convertStorageToCartesian();
+
+	    	pointb.getDistance(new PointCP3('P',0.0,0.0));
 	    	pointb.getDistance(new PointCP3('C',0.0,0.0));
-	    	point3.getDistance(new PointCP3('P',0.0,0.0));
 	    	
 	    	double r = (Math.random()*360.0);
 	    	pointb.rotatePoint(r);
@@ -139,7 +143,7 @@ public class PointCPTest
 	    long stopTime2 = System.currentTimeMillis();
 	    long elapsedTime2 = stopTime2-startTime2;
 	    System.out.println("		Elapsed time of Design 6: "+ elapsedTime2 + " milliseconds");
-    }
+    	}
     }
 
   /**
