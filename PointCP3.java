@@ -86,9 +86,9 @@ public class PointCP3
   /**
    * Converts Cartesian coordinates to Polar coordinates.
    */
-  public void convertStorageToPolar()
+  public PointCP3 convertStorageToPolar()
   {
-    if(typeCoord != 'P')
+   /**if(typeCoord != 'P')
     {
       //Calculate RHO and THETA
       double temp = getRho();
@@ -96,15 +96,17 @@ public class PointCP3
       xOrRho = temp;
       
       typeCoord = 'P';  //Change coord type identifier
-    }
+    }*/
+    return new PointCP3('P',xOrRho,yOrTheta);
   }
 	
+  
   /**
    * Converts Polar coordinates to Cartesian coordinates.
    */
-  public void convertStorageToCartesian()
+  public PointCP2 convertStorageToCartesian()
   {
-    if(typeCoord != 'C')
+	if(typeCoord != 'C')
     {
       //Calculate X and Y
       double temp = getX();
@@ -113,6 +115,7 @@ public class PointCP3
    
       typeCoord = 'C';	//Change coord type identifier
     }
+    return new PointCP2('C',xOrRho,yOrTheta);
   }
 
   /**
