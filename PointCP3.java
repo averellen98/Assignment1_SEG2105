@@ -44,18 +44,20 @@ public class PointCP3
     if(type != 'C' && type != 'P')
       throw new IllegalArgumentException();
     
-    
-    if(typeCoord == 'C') {
+    typeCoord = type;
+    if(typeCoord == 'P') {
+    	
     	this.xOrRho = xOrRho;
         this.yOrTheta = yOrTheta;
         
     }else {
+    	
     	this.xOrRho = (Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(yOrTheta, 2)));
         this.yOrTheta = Math.toDegrees(Math.atan2(yOrTheta, xOrRho));
         
     }
     
-    typeCoord = type;
+    
   }
 	
   
@@ -64,22 +66,22 @@ public class PointCP3
  
   public double getX()
   { 
-      return xOrRho;
+      return (Math.cos(Math.toRadians(yOrTheta)) * xOrRho);
   }
   
   public double getY()
   { 
-      return yOrTheta;
+      return (Math.sin(Math.toRadians(yOrTheta)) * xOrRho);
   }
   
   public double getRho()
   {
-      return (Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(yOrTheta, 2)));
+      return xOrRho;
   }
   
   public double getTheta()
   {
-      return Math.toDegrees(Math.atan2(yOrTheta, xOrRho));
+      return yOrTheta;
   }
   
 	
@@ -109,8 +111,8 @@ public class PointCP3
 	if(typeCoord != 'C')
     {
       //Calculate X and Y
-      double temp = getX();
-      yOrTheta = getY();
+      double temp = getRho();
+      yOrTheta = getTheta();
       xOrRho = temp;
    
       typeCoord = 'C';	//Change coord type identifier
